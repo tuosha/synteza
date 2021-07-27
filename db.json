@@ -28,4 +28,16 @@
     "completed":false,
     "completedDate":null,
     "completedStatus":null
-  }]}
+  },
+  {
+    "id":4,
+    "title":"The Last Wish",
+    "author":"Andrzej Sapkowski",
+    "bookCover":"https://img3.labirint.ru/rc/9fd928f6434d8adbade2e0d5994922a9/220x340/books58/571931/cover.png?1613741122",
+    "publicationDate":1993,
+    "annotation":"Geralt of Rivia is a witcher. A cunning sorcerer. A merciless assassin.nAnd a cold-blooded killer.His sole purpose: to destroy the monsters that plague the world.",
+    "completed":true,
+    "completedDate":null,
+    "completedStatus":null
+  }
+]}

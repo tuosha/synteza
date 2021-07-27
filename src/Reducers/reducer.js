@@ -7,22 +7,22 @@ const initState = {
         publicationDate : true,
         annotation : false,
     },
-    completedBooks : []
+    showCompletedBooks : true
 };
 
 const reducer = (state = initState, action) => {
     switch (action.type) {
-        case 'CHANGE_BOOKS_LIST_VIEW_TYPE' :
+        case 'CHANGE_BOOKS_LIST_VIEW_TYPE':
             return {
                 ...state,
                 booksListViewType : action.payload
             };
-        case 'SELECT_ITEM_ID' :
+        case 'SELECT_ITEM_ID':
             return {
                 ...state,
                 selectedItemId : action.payload
             };
-        case 'CHANGE_VIEW_LIST_CONFIG' :
+        case 'CHANGE_VIEW_LIST_CONFIG':
             const {boxId, checked} = action.payload;
             return {
                 ...state,
@@ -31,10 +31,14 @@ const reducer = (state = initState, action) => {
                     [boxId] : !checked
                 }
             };
-        case 'MOVE_BOOK_TO_COMPLETED' :
+        case 'CHANGE_VIEW_COMPLETED_BOOKS':
             return {
                 ...state,
-                
+                showCompletedBooks : !state.showCompletedBooks
+            };
+        case 'CHANGE_BOOK_STATUS_TO_COMPLETED':
+            return {
+                ...state,
             };
         default:
             return state

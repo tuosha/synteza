@@ -16,9 +16,14 @@ const changeViewListConfig = (item) => {
         payload : item
     }
 };
-const moveBookToCompleted = (item) => {
+const changeViewCompletedBooks = () => {
     return {
-        type : 'MOVE_BOOK_TO_COMPLETED',
+        type : 'CHANGE_VIEW_COMPLETED_BOOKS',
+    }
+};
+const changeBookStatusToCompleted = (item) => {
+    return {
+        type : 'CHANGE_BOOK_STATUS_TO_COMPLETED',
         payload : item
     }
 }
@@ -26,5 +31,6 @@ const moveBookToCompleted = (item) => {
 export {
     changeBooksListViewType,
     selectItemId,
-    changeViewListConfig
+    changeViewListConfig,
+    changeViewCompletedBooks
 }
