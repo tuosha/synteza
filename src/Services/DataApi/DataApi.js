@@ -24,7 +24,10 @@ class DataApi {
             author: book.author,
             annotation : book.annotation,
             publicationDate : book.publicationDate,
-            bookCover : book.bookCover
+            bookCover : book.bookCover,
+            completed: book.completed,
+            completedDate: book.completedDate,
+            completedStatus: book.completedStatus
         }
     }
 };
