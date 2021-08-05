@@ -2,6 +2,7 @@ import React from 'react';
 import ItemDetails from "../ItemDetails";
 import withContextData from "../../Decorators/withContextData";
 import {connect} from "react-redux";
+import {selectItemId} from "../../Actions/actions";
 
 const BookDetails = (props) => {
     return(
@@ -27,8 +28,9 @@ const Record = ({item, field, label }) => {
     )
 };
 const mapStateToProps = (state) => {
+    console.log(state.itemStatus.selectedItemId)
     return {
-        selectedItem : state.selectedItemId,
+        selectedItem : state.itemStatus.selectedItemId,
     }
 };
 

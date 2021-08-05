@@ -1,14 +1,14 @@
 import React from 'react'
-import './item-list.css'
 import {bindActionCreators} from "redux";
 import {selectItemId} from "../../Actions/actions";
 import {connect} from "react-redux";
+import './item-list.css'
 
 const ItemList = ({ data, selectItem, config, children : itemInfo}) => {
     const list = data.map(item =>
         <li className='list-group-item'
             key={item.id}
-            onClick={() => selectItem(item.id)}
+            onClick={ () => selectItem(item.id) }
         >
             {itemInfo(item, config)}
         </li>

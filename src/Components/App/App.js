@@ -18,12 +18,12 @@ class App extends Component {
     dataApi = new DataApi();
 
     render() {
-        const {booksViewConfig} = this.props;
+        const {booksListViewConfig} = this.props;
         return (
             <div className='app'>
                     <DataProvider value = {this.dataApi}>
                         <SearchProvider value = {this.state.searched}>
-                            <CustomViewProvider value = {booksViewConfig}>
+                            <CustomViewProvider value = {booksListViewConfig}>
                                 <Router>
                                     <div className="navbar navbar-expand-lg navbar-light bg-light">
                                       <HeaderPanel/>
@@ -43,9 +43,7 @@ class App extends Component {
         this.setState(({searched : searched}))
     };
 }
-const mapStateToProps = (state) => {
-    return {
-        booksViewConfig : state.booksListViewConfig
-    }
+const mapStateToProps = ({listViewConfig : {booksListViewConfig}}) => {
+    return {booksListViewConfig}
 };
 export default connect(mapStateToProps, null)(App);

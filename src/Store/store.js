@@ -17,5 +17,4 @@ const strMiddleware = () => (dispatch) => (action) => {
 
 const store = createStore(reducer, applyMiddleware(strMiddleware, logMiddleware));
 
-
 export default store

@@ -2,11 +2,25 @@ import React from 'react';
 import {BooksList, BooksTableList} from "../HOCHelpers/itemLists";
 import BookDetails from "../HOCHelpers/itemDetails";
 import {connect} from "react-redux";
+import './view-list.css'
 
-const ViewList = ({booksListViewType}) => {
-    switch(booksListViewType) {
+const ViewList = ({listViewType, completedBooks}) => {
+    const showCompleted = completedBooks ?
+        <div className='completed-books-list'>
+            <h2>Completed books:</h2>
+            <BooksList/>
+        </div> : null;
+    switch(listViewType) {
         case 'List' :
-            return <BooksList/>;
+            return (
+                <React.Fragment>
+                    <div className='planned-books-list'>
+                        <h2>Books in plans:</h2>
+                        <BooksList/>
+                    </div>
+                        {showCompleted}
+                </React.Fragment>
+                );
         case 'ListWithDetails' :
             return (
                 <div className='detailed-list row'>
@@ -25,9 +39,10 @@ const ViewList = ({booksListViewType}) => {
     }
 };
 
-const mapStateToProps = (state) => {
-    return {
-        booksListViewType : state.booksListViewType,
+const mapStateToProps = ( {listViewType : {booksListViewType}, listViewConfig : {showCompletedBooks} }) => {
+    return  {
+        listViewType : booksListViewType,
+        completedBooks : showCompletedBooks
     }
 };
 

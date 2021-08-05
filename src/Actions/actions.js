@@ -21,12 +21,12 @@ const changeViewCompletedBooks = () => {
         type : 'CHANGE_VIEW_COMPLETED_BOOKS',
     }
 };
-const changeBookStatusToCompleted = (item) => {
+const changeBookStatus = (item) => {
     return {
-        type : 'CHANGE_BOOK_STATUS_TO_COMPLETED',
+        type : 'CHANGE_BOOK_STATUS',
         payload : item
     }
-}
+};
 
 export {
     changeBooksListViewType,
