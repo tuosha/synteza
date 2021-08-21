@@ -1,12 +1,12 @@
 import React from 'react';
 import withChildren from "../../Decorators/withChildren";
 import ItemList from "../ItemList/item-list";
-import withDataFromServer from "../../Decorators/withDataFromServer";
 import withContextData from "../../Decorators/withContextData";
 import compose from "../../Decorators/compose";
 import withSearch from "../../Decorators/withSearch";
 import withCustomView from "../../Decorators/withCustomView";
 import TableList from "../TableList";
+
 
 const booksInfo = ( data, config, type ) => {
     const author =  config.author ? data.author: null;
@@ -59,16 +59,17 @@ const onSearch = (items, searched) => {
 
 const composition = (component) => compose(
     withContextData(mapDataToProps),
-    withDataFromServer,
     withSearch(onSearch),
     withCustomView,
     withChildren(booksInfo)
 )(component);
 
-const BooksList = composition(ItemList);
+const BooksListCompleted = composition(ItemList);
+const BooksListPlanned = composition(ItemList);
 const BooksTableList = composition(TableList);
 
 export {
-    BooksList,
+    BooksListCompleted,
+    BooksListPlanned,
     BooksTableList
 };

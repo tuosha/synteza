@@ -2,13 +2,14 @@ import React from 'react'
 import withCustomView from "../../Decorators/withCustomView";
 import ItemsViewConfiguration from "./ItemsViewConfiguration";
 import ShowCompletedItems from "./ShowCompletedItems";
+import './Customization.css'
 
 const Customization = ()=> {
     return (
-        <React.Fragment>
+        <div className='customization-page'>
             <ShowCompletedItems/>
             <ItemsViewConfiguration/>
-        </React.Fragment>
+        </div>
         )
 };
 

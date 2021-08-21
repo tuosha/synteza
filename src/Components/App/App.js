@@ -10,6 +10,7 @@ import DataApi from "../../Services/DataApi";
 import {BrowserRouter as Router, Route} from "react-router-dom";
 import Customization from "../Customization";
 import {connect} from 'react-redux';
+import BooksPage from "../BooksPage/BooksPage";
 
 class App extends Component {
     state = {
@@ -29,7 +30,7 @@ class App extends Component {
                                       <HeaderPanel/>
                                       <SearchPanel onSearchChange = {this.onSearchChange}/>
                                     </div>
-                                  <Route path="/books" render = {() => <ViewList/>} exact/>
+                                  <Route path="/books" render = {() => <BooksPage/>} exact/>
                                   <Route path="/films" render = {() => <ViewList/>} exact/>
                                   <Route path="/customization" render = {() => <Customization/>} exact/>
                                 </Router>

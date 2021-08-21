@@ -5,16 +5,14 @@ import {connect} from "react-redux";
 
 const ShowCompletedItems = ({showCompletedBooks, onChangeViewCompletedBooks}) => {
     return (
-        <div>
+        <div className="form-check">
             <h4>Show completed: </h4>
-            <div className="form-check">
-                <input type="checkbox"
-                       className="form-check-input"
-                       id="show-completed-items"
-                       defaultChecked={showCompletedBooks}
-                       onClick={onChangeViewCompletedBooks}/>
-                <label className="form-check-label" htmlFor="show-completed-items">Click me</label>
-            </div>
+            <input type="checkbox"
+                   className="form-check-input"
+                   id="show-completed-items"
+                   defaultChecked={showCompletedBooks}
+                   onClick={onChangeViewCompletedBooks}/>
+            <label className="form-check-label" htmlFor="show-completed-items">Click me</label>
         </div>
     )
 };

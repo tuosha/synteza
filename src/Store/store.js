@@ -1,5 +1,6 @@
 import {createStore, applyMiddleware} from 'redux'
 import reducer from '../Reducers/reducer'
+import thunkMiddleware from 'redux-thunk'
 
 const logMiddleware = (store) => (dispatch) => (action) => {
     console.log(action.type);
@@ -15,6 +16,6 @@ const strMiddleware = () => (dispatch) => (action) => {
     return dispatch(action)
 };
 
-const store = createStore(reducer, applyMiddleware(strMiddleware, logMiddleware));
+const store = createStore(reducer, applyMiddleware(strMiddleware, logMiddleware, thunkMiddleware));
 
 export default store

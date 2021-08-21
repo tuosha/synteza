@@ -6,7 +6,6 @@ const withDataFromServer = (Wrapped) => {
         state = {
             data: null
         };
-
         componentDidMount() {
             this.update();
         }

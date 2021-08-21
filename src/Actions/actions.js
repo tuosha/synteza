@@ -27,10 +27,35 @@ const changeBookStatus = (item) => {
         payload : item
     }
 };
+const booksRequested = () => {
+    return {
+        type : 'FETCH_BOOKS_REQUESTED'
+    }
+};
+const booksLoaded = (data) => {
+    return {
+        type : 'FETCH_BOOKS_LOADED',
+        payload : data
+    }
+};
+const booksError = (error) => {
+    return {
+        type : 'FETCH_BOOKS_ERROR',
+        payload : error
+    }
+};
+const getDataFromServer = (dataApi) => () => (dispatch) => {
+    dispatch(booksRequested());
+    dataApi.getAllBooks()
+        .then(data => dispatch(booksLoaded(data)))
+        .catch(error => dispatch(booksError(error)))
+};
 
 export {
     changeBooksListViewType,
     selectItemId,
     changeViewListConfig,
-    changeViewCompletedBooks
+    changeViewCompletedBooks,
+    changeBookStatus,
+    getDataFromServer
 }

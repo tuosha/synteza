@@ -1,6 +1,9 @@
-const updateStatus = (oldStatus, nextStatus) => {
-    Object.assign(oldStatus, nextStatus,  )
+const updateCompletedStatus = (data, oldItem, prop) => {
+    const ind = data.findIndex(el => el.id === oldItem.id);
+    const newItem = Object.assign({}, oldItem, {[prop]: !oldItem[prop]});
+    return [...data.slice(0,ind), newItem, ...data.slice(ind+1)]
 };
+
 
 const changeItemStatus = (state, action) => {
     if (state === undefined) {
@@ -15,18 +18,14 @@ const changeItemStatus = (state, action) => {
                 'beforeCompleted' : 'red',
                 'completed' : 'grey'
             },
-            completed : false
+            completed : false,
         }
     }
     switch (action.type) {
         case 'SELECT_ITEM_ID':
             return {
+                ...state.itemStatus,
                 selectedItemId : action.payload
-            };
-        case 'CHANGE_BOOK_STATUS':
-            console.log(action.payload);
-            return {
-                currentStatus: updateStatus(action.payload)
             };
         default:
             return state.itemStatus

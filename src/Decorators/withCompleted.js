@@ -1,10 +1,12 @@
 import React from 'react';
 
-const withFinished = (Wrapped) => {
+const withCompleted = (Wrapped) => {
     return (props) => {
-        const date = new Date().getFullYear();
-        return <Wrapped {...props} date = {date}/>
+        console.log(props);
+        return <Wrapped {...props} />
     }
 };
 
-export default withFinished
+
+
+export default withCompleted
