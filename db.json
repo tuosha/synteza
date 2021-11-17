@@ -6,8 +6,7 @@
     "publicationDate":1937,
     "annotation":"The Hobbit is set within Tolkien's fictional universe and follows the quest of home-loving Bilbo Baggins, the titular hobbit, to win a share of the treasure guarded by Smaug the dragon. Bilbo's journey takes him from light-hearted, rural surroundings into more sinister territory.",
     "completed":false,
-    "completedDate":null,
-    "completedStatus":null
+    "completedDate":null
   },
   {"id":2,
     "title":"A Hat Full of Sky",
@@ -16,8 +15,7 @@
     "publicationDate":2004,
     "annotation":"A Hat Full of Sky by Terry Pratchett is a fantasy novel about a girl who is learning her place as a witch. Early in the novel, Tiffany Aching leaves  her home in the chalk country (based on England's chalk country) to act as an apprentice and maid for the elderly witch Miss Level ",
     "completed":false,
-    "completedDate":null,
-    "completedStatus":null
+    "completedDate":null
   },
   {"id":3,
     "title":"Nine Princes in Amber",
@@ -26,8 +24,7 @@
     "publicationDate":1970,
     "annotation":"Carl Corey wakes in a medical clinic, with little to no knowledge of who he is or how he got there. He suspects he is being over-medicated, so he overpowers the nurse and doctor and escapes his room. He finds the manager of the clinic, and learns that he was recovering from a car accident in a private clinic, paid for by his sister, Evelyn Flaumel.",
     "completed":false,
-    "completedDate":null,
-    "completedStatus":null
+    "completedDate":null
   },
   {
     "id":4,
@@ -38,6 +35,26 @@
     "annotation":"Geralt of Rivia is a witcher. A cunning sorcerer. A merciless assassin.nAnd a cold-blooded killer.His sole purpose: to destroy the monsters that plague the world.",
     "completed":true,
     "completedDate":null,
-    "completedStatus":null
+    "currentStatus": "completed"
+  },
+  {
+    "id":5,
+    "title":"Кишот",
+    "author":"Салман Рушди",
+    "bookCover":"https://img4.labirint.ru/rc/9a3b69358dec669d5cf9517ba0eaf99b/220x340/books83/820762/cover.jpg?1630661108",
+    "publicationDate":2019,
+    "annotation":"Сэм Дюшан, сочинитель шпионских романов, вдохновленный бессмертным шедевром Сервантеса, придумывает своего Дон Кихота - пожилого торговца Кишота, настоящего фаната телевидения, влюбленного в телезвезду. Вместе со своим (воображаемым) сыном Санчо Кишот пускается в полное авантюр странствие по Америке, чтобы доказать, что он достоин благосклонности своей возлюбленной.",
+    "completed":false,
+    "completedDate":null
+  },
+  {
+    "id":6,
+    "title":"Transhumanism inc.",
+    "author":"Виктор Пелевин",
+    "bookCover":"https://img3.labirint.ru/rc/c246d5f5b9e5cc336d44990f54bb59fc/220x340/books82/815423/cover.jpg?1630049102",
+    "publicationDate":2021,
+    "annotation":"В будущем богатые люди смогут отделить свой мозг от старящегося тела - и станут жить почти вечно в особом \"баночном\" измерении. Туда уйдут вожди, мировые олигархи и архитекторы миропорядка. Там будет возможно все.\n\n Но в банку пустят не каждого. На земле останется зеленая посткарбоновая цивилизация, уменьшенная до размеров обслуживающего персонала, и слуги-биороботы.",
+    "completed":false,
+    "completedDate":null
   }
 ]}
