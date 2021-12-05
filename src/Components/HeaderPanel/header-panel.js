@@ -28,10 +28,10 @@ const HeaderPanel = ({changeViewType}) => {
                                 View Type
                             </a>
                             <div className="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <a className="dropdown-item" href="/#" onClick={(e) => {e.preventDefault(); changeViewType('List')}}>View as List</a>
+                                <a className="dropdown-item" href="/#" onClick={(e) => {e.preventDefault(); changeViewType('SimpleList')}}>View as List</a>
                                 <a className="dropdown-item" href="/#" onClick={(e) => {e.preventDefault(); changeViewType('ListWithDetails')}}>View with Details</a>
                                 <a className="dropdown-item" href="/#" onClick={(e) => {e.preventDefault(); changeViewType('ListAsTable')}}>View as Table</a>
-                                <a className="dropdown-item" href="/#" onClick={(e) => {e.preventDefault(); changeViewType('ListAsTile')}}>View as Tile</a>
+                                <a className="dropdown-item" href="/#" onClick={(e) => {e.preventDefault(); changeViewType('ListAsTiles')}}>View as Tiles</a>
                             </div>
                         </li>
                         <li className="nav-item">

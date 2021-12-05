@@ -1,6 +1,25 @@
-.completed-books-list h2 {
-    padding : .75rem 1.25rem
+.completed-books-list h2, .planned-books-list h2{
+    padding : .75rem 0.25rem 1rem 1.25rem;
+    display: inline-flex;
+    margin: 0;
 }
-.planned-books-list h2 {
-    padding : .75rem 1.25rem
+
+.simple-list .item-list {
+    max-width: 100%;
+}
+
+.detailed-list .item-list {
+    padding: 0 0 0 1.25rem;
+}
+
+.list-as-tiles{
+}
+.list-as-tiles .list-group{
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+.list-as-tiles .list-group .list-group-item {
+    margin: 0 10px 10px 0;
+    max-width: 25%;
+    border: 1px solid rgba(0,0,0,.125)
 }

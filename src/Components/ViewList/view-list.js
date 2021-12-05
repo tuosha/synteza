@@ -1,36 +1,45 @@
 import React from 'react';
-import {BooksListPlanned, BooksListCompleted, BooksTableList} from "../HOCHelpers/itemLists";
+import {BooksList, BooksTableList} from "../HOCHelpers/itemLists";
 import BookDetails from "../HOCHelpers/itemDetails";
 import {connect} from "react-redux";
 import './view-list.css'
+import AddItemToList from "../AddItemToList";
 
-const ViewList = ({data, listViewType, showCompleted }) => {
+const ViewList = ({data, listViewType, showLists, optionsViewClasses}) => {
+    const {showPlannedBooks, showCompletedBooks} = showLists;
     const itemPlanned = data.filter(item => !item.completed);
     const itemCompleted = data.filter(item => item.completed);
-    const showAsListCompleted = showCompleted ?
+    const showAsListCompleted = showCompletedBooks ?
         <div className='completed-books-list'>
             <h2>Completed books:</h2>
-            <BooksListCompleted data = {itemCompleted}/>
+            <BooksList data = {itemCompleted}/>
         </div> : null;
-    const showAsTableCompleted = showCompleted ?
+    const showAsListPlanned = showPlannedBooks ?
+        <div className='planned-books-list'>
+            <h2>Books in plans:</h2>
+            <AddItemToList itemLabel='Add book'/>
+            <BooksList data = {itemPlanned}/>
+        </div> :
+        <h3>Not books in planned list</h3>;
+    const showAsTableCompleted = showCompletedBooks ?
         <div className='completed-books-table'>
             <h2>Completed books:</h2>
             <BooksTableList data = {itemCompleted}/>
         </div> : null;
-    const showAsListPlanned = itemPlanned.length ?
-        <div className='planned-books-list'>
-            <h2>Books in plans:</h2>
-            <BooksListPlanned data = {itemPlanned}/>
-        </div> : <h3>Not books in planned list</h3>;
+    const showAsTablePlanned = showPlannedBooks ?
+        <div className='completed-books-table'>
+            <h2>Planned books:</h2>
+            <BooksTableList data = {itemPlanned}/>
+        </div> : null;
     switch(listViewType) {
-        case 'List' :
+        case 'SimpleList':
             return (
-                <React.Fragment>
-                        {showAsListPlanned}
-                        {showAsListCompleted}
-                </React.Fragment>
+                <div className='simple-list' style={{'maxWidth' : optionsViewClasses}}>
+                    {showAsListPlanned}
+                    {showAsListCompleted}
+                </div>
                 );
-        case 'ListWithDetails' :
+        case 'ListWithDetails':
             return (
                 <div className='detailed-list row'>
                     <div className='detailed-list left col'>
@@ -42,25 +51,34 @@ const ViewList = ({data, listViewType, showCompleted }) => {
                     </div>
                 </div>
             );
-        case 'ListAsTable' :
+        case 'ListAsTable':
             return (
                 <React.Fragment>
-                    <h2>Books in plans:</h2>
-                    <BooksTableList data={itemPlanned}/>;
+                    {showAsTablePlanned}
                     {showAsTableCompleted}
                 </React.Fragment>
               );
+        case 'ListAsTiles':
+            return (
+                <div className='list-as-tiles'>
+                    <div className='list-as-tiles-planned'>
+                        {showAsListPlanned}
+                    </div>
+                    <div className='list-as-tiles-completed'>
+                        {showAsListCompleted}
+                    </div>
+                </div>
+            );
         default:
-            return <BooksListCompleted data={itemCompleted}/>
+            return <BooksList data={itemPlanned}/>
     }
 };
 
-const mapStateToProps = ( {listViewType : {booksListViewType},
-                          listViewConfig : {showCompletedBooks}
-                          }) => {
+const mapStateToProps = ({listViewType : {booksListViewType, showBooks, booksListItemsWidth}}) => {
     return  {
-        listViewType : booksListViewType,
-        showCompleted  : showCompletedBooks
+        listViewType: booksListViewType,
+        showLists: showBooks,
+        optionsViewClasses: booksListItemsWidth
     }
 };
 

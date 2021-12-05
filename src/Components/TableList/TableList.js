@@ -1,20 +1,24 @@
 import React from "react";
 import {bindActionCreators} from "redux";
-import {selectItemId} from "../../Actions/actions";
+import {changeBookStatus, selectItemId} from "../../Actions/actions";
 import {connect} from "react-redux";
 
-const TableList = ({ data, selectItem, config, children : itemInfo }) => {
+const TableList = ({ data, selectItem, changeStatus, config, children : itemInfo }) => {
     const tableHead = {
         id : 'Id',
         title : 'Title',
         author : 'Author',
         publicationDate : 'Year',
-        annotation : 'Annotation'
+        annotation : 'Annotation',
+        currentStatus : 'Status'
     };
     const tableHeadList = data.length ? itemInfo(tableHead, config, 'TH') : null;
     const tableBodyList = data.map(item =>
             <tr
-                onClick={() => selectItem(item.id)}
+                onClick={() => {
+                    selectItem(item.id);
+                    changeStatus(item)}
+                }
                 key={item.id}
             >
                 {itemInfo(item, config, 'TD')}
@@ -34,7 +38,8 @@ const TableList = ({ data, selectItem, config, children : itemInfo }) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        selectItem : bindActionCreators(selectItemId, dispatch)
+        selectItem : bindActionCreators(selectItemId, dispatch),
+        changeStatus : bindActionCreators(changeBookStatus, dispatch)
     }
 };
 

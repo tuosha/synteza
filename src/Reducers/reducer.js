@@ -10,7 +10,6 @@ const reducer = (state, action) => {
         listViewConfig : changeViewListConfig(state, action),
         itemStatus : changeItemStatus(state, action)
     }
-
 };
 
 export default reducer

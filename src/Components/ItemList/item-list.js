@@ -4,22 +4,23 @@ import {selectItemId, changeBookStatus} from "../../Actions/actions";
 import {connect} from "react-redux";
 import './item-list.css'
 
-const ItemList = ({ data, selectItem, changeStatus, config, children : itemInfo}) => {
+const ItemList = ({ data, selectItem, changeStatus, config, optionsViewClasses, children : itemInfo}) => {
     const list = data.map(item =>
-        <li className='list-group-item'
+        <li style = {{ backgroundColor: item.statusColor }}
+            className='list-group-item'
             key={item.id}
-            onClick={() => { selectItem(item.id); changeStatus(item)} }
+            onClick={() => selectItem(item.id)}
+            onDoubleClick={() => changeStatus(item)}
         >
             {itemInfo(item, config)}
         </li>
     );
     return (
-            <ul className='item-list list-group'>
+            <ul className='list-group item-list'>
                 {list}
             </ul>
     )
 };
-
 
 const mapDispatchToProps = (dispatch) => {
     return {

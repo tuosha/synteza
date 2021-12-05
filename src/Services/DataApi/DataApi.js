@@ -27,7 +27,7 @@ class DataApi {
             bookCover : book.bookCover,
             completed: book.completed,
             completedDate: book.completedDate,
-            completedStatus: book.completedStatus
+            currentStatus: book.currentStatus
         }
     }
 };

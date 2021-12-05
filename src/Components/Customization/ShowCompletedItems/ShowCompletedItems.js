@@ -1,28 +1,28 @@
 import React from "react";
 import {bindActionCreators} from "redux";
-import {changeViewCompletedBooks} from "../../../Actions/actions";
+import {showCompletedBooks} from "../../../Actions/actions";
 import {connect} from "react-redux";
+import './ShowCompletedItems.css'
+import {createConfigList } from "../../../Utils";
+import ShowCustomConfiguration from "../ShowCustomConfiguration";
 
-const ShowCompletedItems = ({showCompletedBooks, onChangeViewCompletedBooks}) => {
-    return (
-        <div className="form-check">
-            <h4>Show completed: </h4>
-            <input type="checkbox"
-                   className="form-check-input"
-                   id="show-completed-items"
-                   defaultChecked={showCompletedBooks}
-                   onClick={onChangeViewCompletedBooks}/>
-            <label className="form-check-label" htmlFor="show-completed-items">Click me</label>
-        </div>
-    )
+const ShowCompletedItems = ({showBooks, onShowCompletedBooks}) => {
+    return <ShowCustomConfiguration
+        title='Completed books:'
+        divClassName='show-completed-custom'
+        configItems={showBooks}
+        createConfigFunction={createConfigList}
+        onChangeConfig={onShowCompletedBooks}
+        optionsClassNames={{div : 'show-completed-items'}}
+    />
 };
 
-const mapStateToProps = ({listViewConfig : {showCompletedBooks}}) => {
-    return {showCompletedBooks}
+const mapStateToProps = ({listViewType : {showBooks}}) => {
+    return {showBooks}
 };
 const mapDispatchToPros = (dispatch) => {
     return {
-        onChangeViewCompletedBooks : bindActionCreators(changeViewCompletedBooks, dispatch)
+        onShowCompletedBooks: bindActionCreators(showCompletedBooks, dispatch)
     }
 };
 

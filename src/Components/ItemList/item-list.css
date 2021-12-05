@@ -1,10 +1,14 @@
 .item-list {
     margin-bottom: 1rem;
+    padding: 0 1.25rem 0 1.25rem;
 }
 
 .item-list .list-group-item {
     cursor: pointer;
 }
 .item-list .list-group-item:hover {
+    background-color: #dddae55e;
+}
+.item-list .list-group-item:active {
     background-color: #dddae55e;
 }

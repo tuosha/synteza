@@ -1,3 +1,3 @@
-import ShowCompletedItems from "./ShowCompletedItems";
+import ShowCompletedItems from "./ShowCompletedItems"
 
 export default ShowCompletedItems

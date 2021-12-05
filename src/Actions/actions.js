@@ -4,21 +4,22 @@ const changeBooksListViewType = (booksListViewType) => {
         payload : booksListViewType
     }
 };
-const selectItemId = (id = 1) => {
+const selectItemId = (id=1) => {
     return {
         type : 'SELECT_ITEM_ID',
         payload : id
     }
 };
-const changeViewListConfig = (item) => {
+const changeViewListConfig = (checkBox) => {
     return {
         type : 'CHANGE_VIEW_LIST_CONFIG',
-        payload : item
+        payload : checkBox
     }
 };
-const changeViewCompletedBooks = () => {
+const showCompletedBooks = (checkBox) => {
     return {
-        type : 'CHANGE_VIEW_COMPLETED_BOOKS',
+        type : 'SHOW_COMPLETED_BOOKS',
+        payload : checkBox
     }
 };
 const changeBookStatus = (item) => {
@@ -44,6 +45,12 @@ const booksError = (error) => {
         payload : error
     }
 };
+const changeListItemsWidth = (listItemsWidth) => {
+    return {
+        type : 'CHANGE_LIST_ITEMS_WIDTH',
+        payload: listItemsWidth
+    }
+};
 const getDataFromServer = (dataApi) => () => (dispatch) => {
     dispatch(booksRequested());
     dataApi.getAllBooks()
@@ -55,7 +62,8 @@ export {
     changeBooksListViewType,
     selectItemId,
     changeViewListConfig,
-    changeViewCompletedBooks,
+    showCompletedBooks,
     changeBookStatus,
-    getDataFromServer
+    getDataFromServer,
+    changeListItemsWidth
 }

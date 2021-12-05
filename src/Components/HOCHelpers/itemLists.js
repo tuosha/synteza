@@ -1,17 +1,17 @@
 import React from 'react';
 import withChildren from "../../Decorators/withChildren";
 import ItemList from "../ItemList/item-list";
-import withContextData from "../../Decorators/withContextData";
 import compose from "../../Decorators/compose";
 import withSearch from "../../Decorators/withSearch";
 import withCustomView from "../../Decorators/withCustomView";
 import TableList from "../TableList";
-
+import {onSearch} from "../../Utils";
 
 const booksInfo = ( data, config, type ) => {
     const author =  config.author ? data.author: null;
     const publicationDate = config.publicationDate ? data.publicationDate : null;
     const annotation = config.annotation ? data.annotation : null;
+    const currentStatus = config.currentStatus ? data.currentStatus : null;
     switch (type) {
         case 'TH' :
             return (
@@ -21,6 +21,7 @@ const booksInfo = ( data, config, type ) => {
                     <th scope ='col'>{author}</th>
                     <th scope ='col'>{publicationDate}</th>
                     <th scope ='col'>{annotation}</th>
+                    <th scope ='col'>{currentStatus}</th>
                 </tr>
             );
         case 'TD' :
@@ -31,45 +32,32 @@ const booksInfo = ( data, config, type ) => {
                     <td>{author}</td>
                     <td>{publicationDate}</td>
                     <td><i>{annotation}</i></td>
+                    <td>{currentStatus}</td>
                 </React.Fragment>
             );
         default :
             return (
-                <p>
+                <section>
                     <span><b>{data.title}</b></span>
                     {author ? <span> by : {data.author}</span> : null}
                     {publicationDate ? <span> in : {data.publicationDate}</span> : null}
                     {annotation  ? <span><br/><i>Annotation : {data.annotation}</i></span> : null}
-                </p>
+                    {currentStatus ? <span><br/><i>{data.currentStatus}</i></span> : null}
+                </section>
             );
     }
 };
 
-const mapDataToProps = (dataApi) => {
-    return {
-        getData: dataApi.getAllBooks
-    }
-};
-
-const onSearch = (items, searched) => {
-    if (!searched) return items;
-    return items.filter(item =>
-        item.title.toLowerCase().indexOf(searched.toLowerCase()) > -1)
-};
-
 const composition = (component) => compose(
-    withContextData(mapDataToProps),
     withSearch(onSearch),
     withCustomView,
     withChildren(booksInfo)
 )(component);
 
-const BooksListCompleted = composition(ItemList);
-const BooksListPlanned = composition(ItemList);
+const BooksList = composition(ItemList);
 const BooksTableList = composition(TableList);
 
 export {
-    BooksListCompleted,
-    BooksListPlanned,
+    BooksList,
     BooksTableList
 };
