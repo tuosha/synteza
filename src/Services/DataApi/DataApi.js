@@ -2,9 +2,7 @@ class DataApi {
     _baseUrl = 'http://localhost:3001/';
      getData = async (url) => {
         const res = await fetch(`${this._baseUrl}${url}`);
-        if (!res.ok){
-            throw new Error("Can't connect to SERVER, status : " + res.status)
-        }
+
         return await res.json();
     };
 
